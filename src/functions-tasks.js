@@ -50,8 +50,8 @@ function getFunctionBody(func) {
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  return funcs.map((func) => func.length);
 }
 
 /**
@@ -70,8 +70,10 @@ function getArgumentsCount(/* funcs */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return function powerFunction(base) {
+    return base ** exponent;
+  };
 }
 
 /**
@@ -87,10 +89,19 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...coefficients) {
+  switch (coefficients.length) {
+    case 1:
+      return () => coefficients[0];
+    case 2:
+      return (x) => coefficients[0] * x + coefficients[1];
+    case 3:
+      return (x) =>
+        coefficients[0] * x ** 2 + coefficients[1] * x + coefficients[2];
+    default:
+      return null;
+  }
 }
-
 /**
  * Memoizes passed function and returns function
  * which invoked first time calls the passed function and then always returns cached result.
