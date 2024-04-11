@@ -17,8 +17,8 @@
  *   getCurrentFunctionName() => 'getCurrentFunctionName'
  *
  */
-function getCurrentFunctionName() {
-  throw new Error('Not implemented');
+function getCurrentFunctionName(func = getCurrentFunctionName) {
+  return func.name;
 }
 
 /**
@@ -32,8 +32,8 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(/* func */) {
-  throw new Error('Not implemented');
+function getFunctionBody(func) {
+  return func ? func.toString() : '';
 }
 
 /**
